@@ -1,0 +1,405 @@
+:root {
+    --bg-color: #0f172a;
+    --card-bg: rgba(255, 255, 255, 0.05);
+    --card-border: rgba(255, 255, 255, 0.1);
+    --fb-color: #1877f2;
+    --portal-color: #14b8a6;
+    --text-color: #ffffff;
+    --accent-color: #6366f1; /* Paars/blauw voor knoppen */
+}
+
+body {
+    margin: 0;
+    padding: 40px 0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 100%);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: var(--text-color);
+}
+
+h1 {
+    margin-bottom: 1rem;
+    font-size: 2.5rem;
+    text-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    letter-spacing: 1px;
+    text-align: center;
+}
+
+p.subtitle {
+    color: #94a3b8;
+    margin-bottom: 3rem;
+    font-size: 1.1rem;
+    text-align: center;
+}
+
+.site-logo {
+    display: block;
+    width: min(220px, 60vw);
+    height: auto;
+    margin: -1.5rem auto 2rem;
+    object-fit: contain;
+}
+
+/* Grid Layout */
+.school-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2.5rem;
+    width: 90%;
+    max-width: 1200px;
+    padding: 20px;
+    margin-bottom: 4rem;
+}
+
+/* De Geanimeerde Kaart */
+.school-card {
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 20px;
+    padding: 30px;
+    text-align: center;
+    text-decoration: none;
+    color: var(--text-color);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    animation: float 6s ease-in-out infinite;
+}
+
+/* Animatie delays */
+.school-card:nth-child(1) { animation-delay: 0s; }
+.school-card:nth-child(2) { animation-delay: 0.75s; }
+.school-card:nth-child(3) { animation-delay: 1.5s; }
+.school-card:nth-child(4) { animation-delay: 2.25s; }
+
+.school-card:hover {
+    transform: translateY(-15px) scale(1.03);
+    border-color: var(--fb-color);
+    box-shadow: 0 20px 40px rgba(24, 119, 242, 0.2);
+    background: rgba(255, 255, 255, 0.08);
+}
+
+.school-icon {
+    margin-bottom: 1.2rem;
+    transition: transform 0.4s ease, color 0.4s ease;
+    width: 100%;
+    height: 90px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.school-icon img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    max-width: 180px;
+    object-fit: contain;
+}
+
+.school-card:hover .school-icon {
+    transform: scale(1.1) rotate(5deg);
+    color: #fff;
+}
+
+.school-name {
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: 0.8rem;
+    color: #ffffff;
+}
+
+.school-details {
+    font-size: 0.9rem;
+    color: #94a3b8;
+    margin-bottom: 1.5rem;
+    text-align: center;
+    line-height: 1.4;
+}
+
+.school-details i {
+    margin-right: 5px;
+    color: #64748b;
+}
+
+.school-details a {
+    color: inherit;
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.school-details a:hover,
+.school-details a:focus-visible {
+    color: #ffffff;
+    text-decoration: underline;
+}
+
+.card-actions {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-top: auto;
+}
+
+.fb-badge {
+    background: var(--fb-color);
+    color: white;
+    width: 42px;
+    height: 42px;
+    padding: 0;
+    border-radius: 50%;
+    font-size: 1.15rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    opacity: 0.7;
+    transition: opacity 0.3s ease, box-shadow 0.3s ease;
+    margin-top: auto;
+    justify-content: center;
+}
+
+.portal-badge {
+    background: var(--portal-color);
+    color: white;
+    width: 42px;
+    height: 42px;
+    padding: 0;
+    border-radius: 50%;
+    font-size: 1.15rem;
+    display: inline-flex;
+    align-items: center;
+    opacity: 0.7;
+    transition: opacity 0.3s ease, box-shadow 0.3s ease;
+    margin-top: auto;
+    justify-content: center;
+}
+
+.school-card:hover .fb-badge {
+    opacity: 1;
+    box-shadow: 0 4px 15px rgba(24, 119, 242, 0.5);
+}
+
+.school-card:hover .portal-badge {
+    opacity: 1;
+    box-shadow: 0 4px 15px rgba(20, 184, 166, 0.5);
+}
+
+@keyframes float {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+    100% { transform: translateY(0px); }
+}
+
+.site-nav {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.7rem;
+    margin: 0 auto 3rem;
+}
+
+.site-nav a {
+    color: #cbd5e1;
+    border: 1px solid var(--card-border);
+    border-radius: 999px;
+    padding: 0.55rem 1rem;
+    text-decoration: none;
+    transition: background 0.25s ease, color 0.25s ease, border-color 0.25s ease;
+}
+
+.site-nav a:hover,
+.site-nav a:focus-visible {
+    color: #ffffff;
+    background: rgba(20, 184, 166, 0.2);
+    border-color: var(--portal-color);
+}
+
+.content-sections {
+    width: min(90%, 1200px);
+    margin: 0 auto;
+}
+
+.history-section,
+.news-section {
+    margin: 0 auto 5rem;
+    scroll-margin-top: 1.5rem;
+}
+
+.section-heading {
+    max-width: 700px;
+    margin: 0 auto 2.5rem;
+    text-align: center;
+}
+
+.section-heading h2 {
+    margin: 0 0 0.6rem;
+    font-size: clamp(1.8rem, 4vw, 2.6rem);
+}
+
+.section-heading p:not(.section-kicker) {
+    color: #94a3b8;
+    line-height: 1.6;
+}
+
+.section-kicker {
+    margin: 0 0 0.5rem;
+    color: #5eead4;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+}
+
+.history-timeline {
+    max-width: 850px;
+    margin: 0 auto;
+    border-left: 2px solid rgba(94, 234, 212, 0.4);
+    padding-left: 2rem;
+}
+
+.history-item {
+    position: relative;
+    display: grid;
+    grid-template-columns: 90px 1fr;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+    padding: 1.5rem;
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid var(--card-border);
+    border-radius: 14px;
+}
+
+.history-item::before {
+    content: '';
+    position: absolute;
+    left: -2.45rem;
+    top: 1.8rem;
+    width: 0.75rem;
+    height: 0.75rem;
+    background: #fbbf24;
+    border: 3px solid #0f172a;
+    border-radius: 50%;
+}
+
+.history-year {
+    color: #5eead4;
+    font-size: 1.15rem;
+    font-weight: 700;
+}
+
+.history-item h3,
+.news-card h3 {
+    margin: 0 0 0.5rem;
+    color: #ffffff;
+}
+
+.history-item p,
+.news-card p {
+    margin: 0 0 0.8rem;
+    color: #94a3b8;
+    line-height: 1.6;
+}
+
+.history-item a,
+.news-card a {
+    color: #5eead4;
+    text-decoration: none;
+    font-size: 0.9rem;
+}
+
+.history-item a:hover,
+.news-card a:hover {
+    color: #ffffff;
+    text-decoration: underline;
+}
+
+.news-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.2rem;
+}
+
+.news-card {
+    display: flex;
+    flex-direction: column;
+    min-height: 190px;
+    padding: 1.4rem;
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid var(--card-border);
+    border-radius: 14px;
+}
+
+.news-card h3 {
+    font-size: 1.1rem;
+}
+
+.news-card a {
+    margin-top: auto;
+}
+
+.news-badge {
+    align-self: flex-start;
+    margin-bottom: 0.8rem;
+    color: #fbbf24;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+}
+
+.news-card-featured {
+    grid-column: span 2;
+    flex-direction: row;
+    align-items: center;
+    gap: 1.25rem;
+    background: linear-gradient(120deg, rgba(20, 184, 166, 0.18), rgba(255, 255, 255, 0.06));
+}
+
+.news-card-featured img {
+    width: 72px;
+    height: 72px;
+    object-fit: contain;
+    flex: 0 0 auto;
+}
+
+.reveal-section {
+    opacity: 0;
+    transform: translateY(35px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.reveal-section.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+@media (max-width: 650px) {
+    .history-item {
+        grid-template-columns: 1fr;
+        gap: 0.4rem;
+    }
+
+    .news-card-featured {
+        grid-column: span 1;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .reveal-section {
+        opacity: 1;
+        transform: none;
+        transition: none;
+    }
+}
